@@ -1,0 +1,280 @@
+{
+  "paragraphs": [
+    {
+      "old": "Mô hình được đánh giá là rừng ngẫu nhiên E5 với 200 cây, min_samples_leaf=5, class_weight=\"balanced\" và random_state=42. Ngưỡng đã khóa là τ* = 0,6. Ô 4.1 của notebook tuần 4 dựng lại mô hình và xác nhận F1-yes trên validation khớp với quyết định tuần 3.",
+      "new": "Mô hình đánh giá là rừng ngẫu nhiên E5 với 200 cây, min_samples_leaf=5, class_weight=\"balanced\", random_state=42 và ngưỡng đã khóa τ* = 0,6. Ô 4.1 tuần 4 tái tạo đúng F1-yes validation trong quyết định tuần 3."
+    },
+    {
+      "old": "Bảng 15 trình bày kết quả tại ngưỡng đã khóa và ngưỡng 0,5 như mốc đối chiếu được quy định trước. Không thay đổi mô hình hoặc ngưỡng theo kết quả test.",
+      "new": "Bảng 15 đối chiếu ngưỡng đã khóa với mốc 0,5 theo đề; kết quả test không được dùng để chọn lại mô hình hoặc ngưỡng."
+    },
+    {
+      "old": "Nếu chỉ gọi những khách được mô hình dự đoán là yes, tại ngưỡng 0,6 ngân hàng sẽ chọn 1.146 trong 9.043 khách, khoảng 12,7% danh sách. Trong nhóm được chọn có 536 khách thực tế đồng ý và 610 khách không đồng ý, tương ứng tỉ lệ thành công khoảng 46,8% trên test.",
+      "new": "Tại ngưỡng 0,6, mô hình đề xuất gọi 1.146/9.043 khách, khoảng 12,7% danh sách. Trong đó, 536 khách thực tế đồng ý và 610 khách không đồng ý, đạt tỉ lệ thành công khoảng 46,8% trên test."
+    },
+    {
+      "old": "Để so sánh công bằng, phương án gọi ngẫu nhiên cũng sử dụng 1.146 cuộc gọi. Với tỉ lệ đồng ý của test là 1.058/9.043, số khách đồng ý kỳ vọng của gọi ngẫu nhiên là khoảng 134 khách. Tỉ lệ đồng ý trong nhóm do mô hình chọn cao khoảng 4 lần mức nền 11,7%. Kết luận này được rút ra từ Precision-yes và số cuộc gọi, không chỉ từ F1-yes.",
+      "new": "Với cùng 1.146 cuộc gọi, gọi ngẫu nhiên có số khách đồng ý kỳ vọng là 1.146 × (1.058/9.043) ≈ 134 khách. Tỉ lệ đồng ý của nhóm do mô hình chọn cao khoảng 4 lần mức nền 11,7%. So sánh này dựa vào Precision-yes và cùng số cuộc gọi, không chỉ dựa vào F1-yes."
+    },
+    {
+      "old": "Mô hình phát hiện 536/1.058 khách đồng ý, đạt Recall-yes khoảng 50,7%, và vẫn bỏ lỡ 522 khách. Khi tăng ngưỡng từ 0,5 lên 0,6, Precision-yes tăng từ 0,380 lên 0,468 nhưng Recall-yes giảm từ 0,595 xuống 0,507. Việc tập trung vào nhóm có tỉ lệ đồng ý cao hơn đi kèm việc bỏ lỡ thêm khách tiềm năng; các tỉ lệ trên dữ liệu lịch sử chưa bảo đảm kết quả của một chiến dịch tương lai.",
+      "new": "Mô hình tìm được 536/1.058 khách đồng ý, đạt Recall-yes khoảng 50,7%, và bỏ lỡ 522 khách. Tăng ngưỡng từ 0,5 lên 0,6 làm Precision-yes tăng từ 0,380 lên 0,468 nhưng Recall-yes giảm từ 0,595 xuống 0,507: danh sách gọi tập trung hơn nhưng mất thêm cơ hội. Các tỉ lệ lịch sử này chưa bảo đảm kết quả của chiến dịch tương lai."
+    },
+    {
+      "old": "Với cùng mô hình E5 và ngưỡng 0,6, F1-yes trên test cao hơn validation khoảng 0,006 và Precision-yes cao hơn khoảng 0,013, tính từ các giá trị chưa làm tròn. Recall-yes giảm khoảng 0,003, tương ứng số khách đồng ý được phát hiện giảm từ 539 xuống 536 trong khi mỗi tập đều có 1.058 khách yes. Chênh lệch nhỏ và phù hợp với dao động ngẫu nhiên; việc chọn trên validation có thể làm điểm validation lạc quan nhưng không có nghĩa điểm test luôn thấp hơn. Có thể báo cáo điểm test như kết quả đánh giá độc lập trên dữ liệu cùng nguồn, song phép chia ngẫu nhiên từ dữ liệu giai đoạn 2008–2010 chưa kiểm chứng khả năng áp dụng cho chiến dịch ở thời điểm khác.",
+      "new": "Với cùng E5 và ngưỡng 0,6, F1-yes test cao hơn validation khoảng 0,006 và Precision-yes cao hơn khoảng 0,013, tính từ số chưa làm tròn. Recall-yes giảm khoảng 0,003, tương ứng phát hiện 536 thay vì 539 khách trong tổng 1.058 khách yes của mỗi tập. Chênh lệch nhỏ, phù hợp với dao động ngẫu nhiên; lựa chọn trên validation có thể tạo sự lạc quan nhưng không khiến điểm test luôn thấp hơn. Có thể báo cáo điểm test như đánh giá độc lập cùng nguồn, song phép chia ngẫu nhiên dữ liệu 2008–2010 chưa kiểm chứng được chiến dịch tương lai."
+    },
+    {
+      "old": "Nếu F1-yes trên test thấp hơn validation 0,01, cũng không quay lại chọn mô hình khác dựa trên test. Việc đó sẽ làm test trở thành một tập phục vụ lựa chọn và mất vai trò đánh giá độc lập. Cần giữ nguyên quyết định đã khóa, báo cáo trung thực và giải thích giới hạn của kết quả.",
+      "new": "Nếu F1-yes test thấp hơn validation 0,01, vẫn giữ quyết định đã khóa và báo cáo trung thực; chọn lại dựa trên test sẽ làm mất tính độc lập của phép đánh giá."
+    },
+    {
+      "old": "Các dự đoán nhìn chung phù hợp với EDA tuần 1. Khách 22 tuổi liên lạc tháng 3 có xác suất 0,851, phù hợp với tỉ lệ đồng ý tương đối cao của nhóm trẻ và tháng 3 trong train. Khách nghỉ hưu 67 tuổi có lịch sử success đạt xác suất 0,951, phù hợp với xu hướng của nhóm trên 60 tuổi và nhóm từng có chiến dịch thành công. Khách 45 tuổi có contact = unknown, liên lạc tháng 5, chỉ đạt 0,103; các nhóm này cũng có tỉ lệ đồng ý thấp trong EDA.",
+      "new": "Dự đoán phù hợp với xu hướng EDA: khách 22 tuổi, tháng 3 đạt p_yes = 0,851; khách nghỉ hưu 67 tuổi, lịch sử success đạt 0,951. Khách 45 tuổi có contact = unknown, tháng 5 chỉ đạt 0,103, phù hợp với tỉ lệ đồng ý thấp của các nhóm này."
+    },
+    {
+      "old": "Khách kỹ thuật viên 35 tuổi đạt 0,431 và được dự đoán no, phù hợp với tỉ lệ đồng ý của nhóm tuổi 30–40 và tháng 8 thấp hơn mức chung trong train. Cả bốn khách giữ nguyên nhãn ở hai ngưỡng. Đây chỉ là đối chiếu với xu hướng; các khách giả định không có nhãn thật nên chưa thể đánh giá đúng hoặc sai. Trường hợp khách 22 tuổi cũng cho thấy poutcome = unknown không đồng nghĩa với việc luôn bị dự đoán no.",
+      "new": "Khách kỹ thuật viên 35 tuổi đạt 0,431 và được dự đoán no; nhóm tuổi 30–40 và tháng 8 cũng có tỉ lệ đồng ý thấp hơn mức chung trong train. Cả bốn khách giữ nhãn ở hai ngưỡng; đây chỉ là đối chiếu xu hướng, chưa đánh giá đúng/sai vì không có nhãn thật. Khách 22 tuổi vẫn được chọn dù poutcome = unknown, nên thiếu lịch sử không đồng nghĩa với luôn bị loại."
+    },
+    {
+      "old": "Nếu chỉ gọi khách có xác suất cao, một số nhóm có thể gần như không được liên hệ. Ở ngưỡng 0,6, từ các chỉ số của nhóm contact = unknown tại Bảng 19 có thể suy ra mô hình chỉ chọn 4/2.634 khách, khoảng 0,15%. Điều này có thể làm giảm cơ hội tiếp cận sản phẩm và khiến dữ liệu chiến dịch sau ít phản hồi từ nhóm bị đánh giá thấp. Đây là giới hạn về khả năng tiếp cận và dữ liệu, chưa phải kết luận toàn diện về công bằng.",
+      "new": "Ngược lại, tại ngưỡng 0,6 chỉ 4/2.634 khách contact = unknown được chọn, khoảng 0,15%, suy ra từ Bảng 19. Nếu duy trì cách chọn này, nhóm có thể ít có cơ hội tiếp cận sản phẩm và ít đóng góp phản hồi cho dữ liệu sau. Giới hạn về khả năng tiếp cận và thiên lệch dữ liệu được bàn rõ ở Mục 7.2."
+    },
+    {
+      "old": "F1-yes trên test là 0,486 (khoảng tin cậy 95%: [0,460; 0,512], bootstrap, B = 1.000). Notebook lấy mẫu có hoàn lại các cặp nhãn thật và dự đoán, giữ đúng cặp của mỗi khách, sử dụng phương pháp phân vị và random_state=42.",
+      "new": "F1-yes trên test là 0,486 (khoảng tin cậy 95%: [0,460; 0,512], bootstrap, B = 1.000). Notebook lấy mẫu có hoàn lại theo cặp nhãn thật–dự đoán, dùng phương pháp phân vị và random_state=42."
+    },
+    {
+      "old": "Khoảng có độ rộng 0,052, tương đối rộng so với các chênh lệch F1 chỉ vài phần nghìn. Các chênh lệch nhỏ giữa mô hình vì vậy chưa nên xem là chắc chắn nếu chỉ dựa vào điểm F1; bản thân khoảng này không thay thế một phép so sánh thống kê giữa hai mô hình. Khoảng chỉ phản ánh dao động do lấy mẫu cho mô hình cố định trên dữ liệu cùng nguồn, chưa đánh giá tác động của thay đổi phân phối khách hàng trong tương lai.",
+      "new": "Độ rộng 0,052 tương đối lớn so với chênh lệch F1 vài phần nghìn, nên chưa xem các chênh lệch nhỏ là chắc chắn chỉ từ điểm F1. Khoảng này không thay thế phép so sánh hai mô hình và chỉ phản ánh dao động lấy mẫu cùng nguồn, chưa đánh giá thay đổi phân phối trong tương lai."
+    },
+    {
+      "old": "Nhóm contact = unknown có Recall-yes thấp nhất, đạt 0,019. Trong 103 khách thực tế đồng ý, mô hình chỉ phát hiện 2 khách và bỏ lỡ 101 khách. Một giả thuyết là mô hình học xu hướng ít đồng ý của nhóm này trong train, nơi EDA ghi nhận tỉ lệ đồng ý khoảng 4,3%, nên nhiều khách yes vẫn nhận xác suất dưới ngưỡng.",
+      "new": "Nhóm contact = unknown có Recall-yes thấp nhất là 0,019: chỉ tìm được 2/103 khách yes, bỏ lỡ 101 khách. Giả thuyết là mô hình học xu hướng ít đồng ý của nhóm trong train (EDA: khoảng 4,3%), nên nhiều khách yes vẫn dưới ngưỡng."
+    },
+    {
+      "old": "Recall thấp nhất thể hiện tỉ lệ bỏ lỡ cao nhất, không đồng nghĩa với số khách bỏ lỡ lớn nhất. Trong bảng contact, nhóm cellular bỏ lỡ 397 khách, nhiều hơn nhóm unknown, do có đến 888 khách yes.",
+      "new": "Đây là tỉ lệ bỏ lỡ cao nhất, không phải số khách bỏ lỡ lớn nhất: nhóm cellular bỏ lỡ 397 khách do có 888 khách yes."
+    },
+    {
+      "old": "Theo poutcome, nhóm unknown có Recall-yes thấp nhất là 0,342, với 657 khách yes và 432 khách bị bỏ lỡ. Ngược lại, nhóm success có Recall-yes bằng 1,000 nhưng Precision-yes chỉ đạt 0,650; việc phát hiện toàn bộ khách đồng ý trong nhóm này vẫn đi kèm các cuộc gọi nhầm.",
+      "new": "Theo poutcome, nhóm unknown có Recall-yes thấp nhất là 0,342, với 657 khách yes và 432 khách bị bỏ lỡ. Nhóm success tìm được toàn bộ khách yes nhưng Precision-yes chỉ 0,650, nên vẫn có gọi nhầm."
+    },
+    {
+      "old": "Trên toàn bộ test, mô hình bỏ lỡ 522 khách và gọi nhầm 610 khách. Sáu trường hợp được lấy ngẫu nhiên bằng cách chọn ba khách từ mỗi loại lỗi với random_state=S_SV. Seed cá nhân là S_SV=226, lấy từ ba chữ số cuối MSSV 3124411226; sáu mã dòng đều khác nhau.",
+      "new": "Test có 522 khách bị bỏ lỡ và 610 khách bị gọi nhầm. Lấy ngẫu nhiên ba khách mỗi loại bằng random_state=S_SV, với S_SV=226 từ MSSV 3124411226; sáu mã dòng đều khác nhau."
+    },
+    {
+      "old": "Không trường hợp nào trong mẫu có xác suất sát ngưỡng 0,6; trường hợp gần nhất là dong:18051 vẫn thấp hơn ngưỡng khoảng 0,199. Vì vậy, không gán nhóm lỗi “xác suất sát ngưỡng” cho sáu khách này.",
+      "new": "Không khách nào trong mẫu có xác suất sát 0,6; gần nhất là dong:18051 vẫn cách khoảng 0,199. Vì vậy, không gán nhóm “sát ngưỡng” cho mẫu này."
+    },
+    {
+      "old": "Với E5, hàm giai_thich thay riêng từng thuộc tính bằng giá trị đại diện trong train: giá trị xuất hiện nhiều nhất cho thuộc tính phân loại và trung vị cho thuộc tính số. Các mức thay đổi dưới đây được làm tròn theo đầu ra notebook, không cộng thành tổng đóng góp và không được diễn giải thành quan hệ nhân quả. Các đề xuất là hướng kiểm chứng trong lần phát triển sau, chưa được áp dụng lên test hiện tại.",
+      "new": "Với E5, giai_thich thay riêng từng thuộc tính bằng mode của thuộc tính phân loại hoặc trung vị của thuộc tính số trong train. Các mức thay đổi dưới đây là xấp xỉ theo đầu ra notebook, không cộng thành tổng đóng góp và không thể diễn giải nhân quả."
+    },
+    {
+      "old": "Đặc điểm và nhầm lẫn: Khách 60 tuổi, đã nghỉ hưu, số dư 1.690, liên lạc tháng 6 với campaign = 4; contact và poutcome đều unknown, pdays = −1. Khách thực tế đồng ý nhưng mô hình dự đoán no.",
+      "new": "Đặc điểm và nhầm lẫn: Khách 60 tuổi, retired; contact và poutcome unknown, pdays = −1. Thực tế yes nhưng được dự đoán no."
+    },
+    {
+      "old": "Bằng chứng: Thay contact từ unknown thành cellular làm xác suất tăng khoảng 0,580; thay job từ retired thành blue-collar tăng 0,060; thay day từ 20 thành 16 tăng 0,040. Dự đoán đặc biệt nhạy với kênh liên lạc, phù hợp với Recall thấp của nhóm contact = unknown tại Bảng 19.",
+      "new": "Bằng chứng: Thay contact unknown → cellular làm xác suất tăng khoảng 0,580; job retired → blue-collar tăng 0,060; day 20 → 16 tăng 0,040. Dự đoán nhạy nhất với kênh liên lạc trong các phép thay."
+    },
+    {
+      "old": "Giả thuyết và đề xuất: Giá trị unknown có thể góp phần làm mô hình đánh giá thấp khách. Cần kiểm tra hồ sơ gốc để bổ sung kênh liên lạc nếu có thông tin xác thực, rồi so sánh cách xử lý thông tin thiếu trên validation. Không tự thay unknown thành cellular chỉ nhằm tăng xác suất.",
+      "new": "Giả thuyết và đề xuất: Kênh unknown có thể góp phần làm khách bị đánh giá thấp, phù hợp Bảng 19. Kiểm tra hồ sơ để bổ sung kênh nếu có căn cứ; so sánh cách xử lý thiếu trên validation, không tự đổi kênh để tăng xác suất."
+    },
+    {
+      "old": "Đặc điểm và nhầm lẫn: Khách 41 tuổi, nghề blue-collar, số dư 0, liên lạc qua cellular vào tháng 7; pdays = −1 và poutcome = unknown. Mô hình dự đoán no dù khách thực tế đồng ý.",
+      "new": "Đặc điểm và nhầm lẫn: Khách 41 tuổi, blue-collar, số dư 0, cellular; pdays = −1 và poutcome unknown. Thực tế yes nhưng được dự đoán no."
+    },
+    {
+      "old": "Bằng chứng: Thay marital từ divorced thành married làm xác suất giảm khoảng 0,150; thay day từ 30 thành 16 tăng 0,080; thay education từ primary thành secondary giảm 0,040. Các phép thay cho thấy phản ứng với nhiều thuộc tính, chưa xác định được một nguyên nhân duy nhất của lỗi.",
+      "new": "Bằng chứng: Thay marital divorced → married làm xác suất giảm khoảng 0,150; day 30 → 16 tăng 0,080; education primary → secondary giảm 0,040. Chưa xác định được một nguyên nhân duy nhất từ các phép thay."
+    },
+    {
+      "old": "Giả thuyết và đề xuất: Thông tin hiện có có thể chưa phản ánh đủ nhu cầu gửi tiết kiệm của khách. Có thể phân tích thêm các khách chưa có lịch sử trên train và validation; nếu thu thập dữ liệu mới, bổ sung nhu cầu và mức độ quan tâm gần đây rồi kiểm tra giá trị dự báo trên validation.",
+      "new": "Giả thuyết và đề xuất: Thiếu lịch sử có thể khiến thông tin hiện có chưa phản ánh đủ nhu cầu. Phân tích thêm nhóm chưa có lịch sử trên validation; nếu có dữ liệu nhu cầu mới, kiểm tra giá trị dự báo trước khi sử dụng."
+    },
+    {
+      "old": "Đặc điểm và nhầm lẫn: Khách 43 tuổi, nghề management, số dư 483, liên lạc qua cellular vào tháng 8, campaign = 6; pdays = −1 và poutcome = unknown. Khách thực tế đồng ý nhưng mô hình dự đoán no.",
+      "new": "Đặc điểm và nhầm lẫn: Khách 43 tuổi, management, cellular, tháng 8, campaign = 6; chưa có lịch sử chiến dịch trước. Thực tế yes nhưng được dự đoán no."
+    },
+    {
+      "old": "Bằng chứng: Thay month từ aug thành may làm xác suất tăng khoảng 0,280; thay day từ 19 thành 16 tăng 0,110; thay campaign từ 6 thành 2 tăng 0,050.",
+      "new": "Bằng chứng: Thay month aug → may làm xác suất tăng khoảng 0,280; day 19 → 16 tăng 0,110; campaign 6 → 2 tăng 0,050."
+    },
+    {
+      "old": "Giả thuyết và đề xuất: Tổ hợp thời điểm và số lần liên lạc có thể khiến mô hình đánh giá thấp trường hợp này. Đề xuất nghiên cứu cách biểu diễn ngày, tháng và tương tác với số lần liên lạc, rồi đối chiếu lỗi theo nhóm và F1-yes trên validation. Mức thay đổi cục bộ chưa chứng minh đổi tháng gọi sẽ làm khách đồng ý.",
+      "new": "Giả thuyết và đề xuất: Tổ hợp thời điểm và số lần gọi có thể làm dự đoán thấp. Thử biểu diễn ngày, tháng và tương tác với campaign trên train, rồi so sánh lỗi nhóm và F1 trên validation. Phép thay chưa chứng minh đổi tháng gọi sẽ làm khách đồng ý."
+    },
+    {
+      "old": "Đặc điểm và nhầm lẫn: Khách 44 tuổi, nghề self-employed, số dư 163, liên lạc qua cellular tháng 8; poutcome = success, pdays = 100 và previous = 3. Mô hình dự đoán yes với xác suất cao nhưng khách thực tế không đồng ý.",
+      "new": "Đặc điểm và nhầm lẫn: Khách 44 tuổi, self-employed; poutcome success, pdays = 100, previous = 3. Thực tế no nhưng được dự đoán yes với xác suất cao."
+    },
+    {
+      "old": "Bằng chứng: Thay poutcome từ success thành unknown làm xác suất giảm khoảng 0,360; thay pdays từ 100 thành −1 giảm 0,200; thay previous từ 3 thành 0 giảm 0,170. Dự đoán nhạy với nhiều thông tin lịch sử chiến dịch.",
+      "new": "Bằng chứng: Thay poutcome success → unknown làm xác suất giảm khoảng 0,360; pdays 100 → −1 giảm 0,200; previous 3 → 0 giảm 0,170. Các tín hiệu lịch sử ảnh hưởng rõ đến dự đoán cục bộ."
+    },
+    {
+      "old": "Giả thuyết và đề xuất: Mô hình có thể học xu hướng đồng ý cao của nhóm từng có chiến dịch thành công, trong khi nhu cầu hiện tại của khách đã khác. Đề xuất phân tích các trường hợp success nhưng nhãn no trên train và validation, đồng thời nghiên cứu tín hiệu về nhu cầu hiện tại nếu có dữ liệu bổ sung.",
+      "new": "Giả thuyết và đề xuất: Lịch sử thành công có thể làm mô hình đánh giá cao dù nhu cầu hiện tại khác trước. Phân tích các ngoại lệ success nhưng nhãn no trên train/validation; nghiên cứu tín hiệu nhu cầu cập nhật nếu có dữ liệu."
+    },
+    {
+      "old": "Đặc điểm và nhầm lẫn: Khách 55 tuổi, nghề technician, số dư 0, liên lạc qua cellular tháng 6; poutcome = success, pdays = 91 và previous = 1. Khách thực tế không đồng ý nhưng mô hình dự đoán yes.",
+      "new": "Đặc điểm và nhầm lẫn: Khách 55 tuổi, technician, số dư 0; poutcome success, pdays = 91, previous = 1. Thực tế no nhưng được dự đoán yes."
+    },
+    {
+      "old": "Bằng chứng: Thay poutcome từ success thành unknown làm xác suất giảm khoảng 0,260; thay pdays từ 91 thành −1 giảm 0,100; thay previous từ 1 thành 0 giảm 0,040.",
+      "new": "Bằng chứng: Thay poutcome success → unknown làm xác suất giảm khoảng 0,260; pdays 91 → −1 giảm 0,100; previous 1 → 0 giảm 0,040."
+    },
+    {
+      "old": "Giả thuyết và đề xuất: Mô hình có thể chưa phân biệt được các ngoại lệ trong nhóm từng có chiến dịch thành công. Đề xuất phân tích tương tác giữa lịch sử chiến dịch và tình trạng tài chính trên train và validation. Số dư bằng 0 là đặc điểm quan sát được, chưa đủ để khẳng định đó là nguyên nhân khách từ chối.",
+      "new": "Giả thuyết và đề xuất: Mô hình có thể chưa phân biệt ngoại lệ trong nhóm từng thành công. Kiểm tra tương tác lịch sử và tình trạng tài chính trên validation. Số dư 0 là đặc điểm quan sát, chưa đủ kết luận đó là nguyên nhân từ chối."
+    },
+    {
+      "old": "Đặc điểm và nhầm lẫn: Khách 72 tuổi, đã nghỉ hưu, số dư 17.739, liên lạc qua cellular tháng 9; pdays = −1, poutcome = unknown và campaign = 4. Mô hình dự đoán yes nhưng khách thực tế không đồng ý.",
+      "new": "Đặc điểm và nhầm lẫn: Khách 72 tuổi, retired, số dư 17.739, tháng 9, chưa có lịch sử chiến dịch trước. Thực tế no nhưng được dự đoán yes."
+    },
+    {
+      "old": "Bằng chứng: Thay job từ retired thành blue-collar làm xác suất giảm khoảng 0,120; thay age từ 72 thành 39 giảm 0,100; thay month từ sep thành may giảm 0,070.",
+      "new": "Bằng chứng: Thay job retired → blue-collar làm xác suất giảm khoảng 0,120; age 72 → 39 giảm 0,100; month sep → may giảm 0,070."
+    },
+    {
+      "old": "Giả thuyết và đề xuất: Khách có thể mang các đặc điểm thường gắn với nhóm đồng ý nhưng có nhu cầu cá nhân khác xu hướng nhóm. EDA tuần 1 ghi nhận tỉ lệ đồng ý cao ở nhóm trên 60 tuổi, song tỉ lệ nhóm không quyết định kết quả từng người. Đề xuất phân tích lỗi trong nhóm lớn tuổi trên validation và nghiên cứu thông tin nhu cầu cá nhân để phân biệt tốt hơn.",
+      "new": "Giả thuyết và đề xuất: Khách giống nhóm thường đồng ý nhưng nhu cầu cá nhân có thể khác. EDA ghi nhận nhóm trên 60 tuổi đồng ý cao, không bảo đảm từng người. Kiểm tra ngoại lệ nhóm lớn tuổi trên validation và giá trị của thông tin nhu cầu bổ sung."
+    },
+    {
+      "old": "Sáu trường hợp minh họa ba nhóm vấn đề: thiếu thông tin kênh hoặc lịch sử liên hệ; dự đoán nhạy với tổ hợp thời điểm và số lần liên lạc; khách có đặc điểm giống nhóm thường đồng ý nhưng mang nhãn ngược lại. Các nhóm có thể giao nhau. Đây là mẫu được lấy từ các trường hợp sai, không đại diện cho toàn bộ test.",
+      "new": "Sáu lỗi gợi ý ba nhóm vấn đề: thiếu thông tin hoặc lịch sử; nhạy với thời điểm và số lần gọi; đặc điểm thường thuận lợi nhưng nhãn ngược lại. Nhóm có thể giao nhau; mẫu lỗi không đại diện toàn bộ test."
+    },
+    {
+      "old": "Thứ nhất, kiểm tra và cải thiện thông tin thiếu khi có hồ sơ gốc; so sánh cách xử lý unknown bằng Recall-yes theo nhóm và F1-yes toàn tập trên validation. Thứ hai, phân tích thêm các ngoại lệ trong nhóm từng có chiến dịch thành công và nghiên cứu biểu diễn thời điểm, số lần liên lạc cùng lịch sử; các thay đổi được học trên train rồi đánh giá trên validation. Thứ ba, theo dõi tỉ lệ được chọn gọi và số khách bị bỏ lỡ trong từng nhóm; nếu triển khai trong tương lai, cân nhắc một phần cuộc gọi khảo sát ngẫu nhiên để có thêm phản hồi từ nhóm ít được chọn.",
+      "new": "Ba hướng kiểm chứng: (1) kiểm tra dữ liệu thiếu bằng hồ sơ gốc, so sánh Recall nhóm và F1 trên validation; (2) thử biểu diễn thời điểm và tương tác với lịch sử trên train, đánh giá trên validation; (3) theo dõi tỉ lệ chọn gọi theo nhóm và cân nhắc khảo sát ngẫu nhiên khi triển khai để bổ sung phản hồi."
+    },
+    {
+      "old": "Các đề xuất chưa được thực nghiệm trong đồ án này. Mô hình và ngưỡng đã khóa vẫn được giữ nguyên; không thử đề xuất trên test rồi báo cáo điểm mới.",
+      "new": "Đây là đề xuất cho lần phát triển sau; giữ nguyên mô hình đã khóa và không thử trên test hiện tại."
+    },
+    {
+      "old": "Đồ án đã xây dựng và so sánh các mô hình trên dữ liệu Bank Marketing, chọn số nơ-ron, mô hình và ngưỡng trên validation rồi đánh giá mô hình đã khóa trên test. E5 được chọn tại ngưỡng 0,6 và đạt F1-yes 0,486 trên test. Bảng 21 tổng hợp các khẳng định chính và phạm vi bằng chứng.",
+      "new": "Đồ án chọn E5 và ngưỡng 0,6 trên validation, sau đó đạt F1-yes 0,486 trên test. Bảng 21 tổng hợp các kết luận và phạm vi bằng chứng."
+    },
+    {
+      "old": "Có bằng chứng cho thấy mô hình tập trung được nhóm có tỉ lệ đồng ý cao hơn mức nền trên test. Tuy nhiên, Recall-yes chỉ đạt 0,507 và vẫn bỏ lỡ 522 khách, nên chưa thể xem mô hình thay thế hoàn toàn việc tìm kiếm khách hàng tiềm năng.",
+      "new": "Mô hình tập trung được nhóm có tỉ lệ đồng ý cao nhưng vẫn bỏ lỡ 522 khách. E5 được chọn đúng quy tắc; chênh lệch nhỏ với E3 trên validation chưa đủ khẳng định ưu thế ổn định và không được dùng để chọn lại trên test."
+    },
+    {
+      "old": "E5 được chọn đúng theo quy tắc validation. Chênh lệch nhỏ giữa E5 và E3 trên validation chưa đủ để khẳng định E5 tốt hơn ổn định; đồ án không đánh giá lại các ứng viên trên test để thay đổi lựa chọn.",
+      "new": null
+    },
+    {
+      "old": "Dữ liệu chỉ đến từ một ngân hàng Bồ Đào Nha trong giai đoạn 2008–2010. Ba tập được chia ngẫu nhiên từ cùng nguồn, nên kết quả chưa kiểm tra được khả năng dự đoán cho ngân hàng khác hoặc chiến dịch ở thời điểm khác. Phân tầng theo nhãn giữ tỉ lệ yes gần nhau nhưng không bảo đảm phân phối các thuộc tính đầu vào giống nhau.",
+      "new": "Dữ liệu của một ngân hàng Bồ Đào Nha giai đoạn 2008–2010 được chia ngẫu nhiên, nên chưa kiểm chứng ngân hàng khác hoặc chiến dịch tương lai. Phân tầng chỉ giữ tỉ lệ nhãn gần nhau. Tương quan theo tuổi, tháng, kênh và phép thay thuộc tính không chứng minh nhân quả."
+    },
+    {
+      "old": "Các mối liên hệ theo tuổi, tháng và kênh liên lạc là tương quan trong dữ liệu lịch sử. Đầu ra thay thuộc tính chỉ minh họa phản ứng cục bộ của mô hình; các thuộc tính có thể tương tác hoặc liên quan với nhau, nên chưa thể chuyển thành kết luận nhân quả.",
+      "new": null
+    },
+    {
+      "old": "Quá trình lựa chọn giới hạn ở các mô hình và cấu hình đã thử. MLP được đánh giá qua năm seed, ngưỡng được chọn trong chín giá trị từ 0,1 đến 0,9. Khoảng bootstrap chỉ phản ánh dao động do lấy mẫu cho mô hình cố định, chưa bao quát toàn bộ bất định do lựa chọn mô hình và thay đổi dữ liệu.",
+      "new": "Phạm vi thử nghiệm chỉ gồm các cấu hình đã xét, năm seed MLP và chín ngưỡng; bootstrap chưa bao quát bất định do chọn mô hình hoặc đổi phân phối. Recall của nhóm contact = unknown chỉ 0,019; ít liên hệ nhóm này có thể giảm cơ hội tiếp cận và làm dữ liệu sau thiên lệch. Chưa đủ bằng chứng kết luận toàn diện về công bằng."
+    },
+    {
+      "old": "Khả năng phát hiện khách đồng ý khác nhau giữa các nhóm. Nhóm contact = unknown có Recall-yes chỉ 0,019 và gần như không được chọn gọi tại ngưỡng 0,6. Nếu chỉ liên hệ nhóm có xác suất cao, ngân hàng có thể bỏ qua khách tiềm năng và thu thập dữ liệu tương lai thiên lệch về nhóm đã được ưu tiên. Các kết quả hiện tại chưa đủ để kết luận toàn diện về công bằng.",
+      "new": null
+    },
+    {
+      "old": "Hướng tiếp theo là đánh giá trên chiến dịch mới hoặc phép chia theo thời gian để kiểm tra hiệu năng khi khách hàng khác dữ liệu huấn luyện. Việc lựa chọn cấu hình tiếp tục thực hiện trên dữ liệu phát triển, còn dữ liệu đánh giá mới được giữ độc lập. Có thể nghiên cứu thêm thông tin nhu cầu hiện tại, cải thiện dữ liệu thiếu và phân tích tương tác giữa lịch sử chiến dịch với thời điểm liên lạc; mỗi thay đổi cần được kiểm chứng bằng F1-yes toàn tập và chỉ số theo nhóm.",
+      "new": "Ưu tiên đánh giá theo thời gian hoặc chiến dịch mới với tập đánh giá độc lập; cải thiện thông tin thiếu và nghiên cứu nhu cầu hiện tại trên train/validation. Nếu triển khai thử, theo dõi F1, chi phí, tỉ lệ được gọi và khách bỏ lỡ theo nhóm; cân nhắc một phần liên hệ ngẫu nhiên để thu phản hồi từ nhóm ít được chọn."
+    },
+    {
+      "old": "Nếu có điều kiện triển khai thử, cần theo dõi số cuộc gọi, tỉ lệ thành công, khách bỏ lỡ và chi phí nghiệp vụ. Một phần cuộc gọi khảo sát ngẫu nhiên có thể cung cấp thêm phản hồi từ nhóm ít được chọn, hỗ trợ phát hiện thiên lệch và cập nhật mô hình.",
+      "new": null
+    },
+    {
+      "old": "Bài học chính là duy trì đúng vai trò của từng tập dữ liệu và đánh giá tương ứng với thời điểm sử dụng mô hình. Duration có thể làm điểm cao hơn nhưng không phù hợp với dự đoán trước cuộc gọi; mô hình và ngưỡng cần được chọn trên validation rồi khóa trước test. Phân tích lỗi phải tách số liệu quan sát được khỏi giả thuyết giải thích. Nếu làm lại đồ án, việc ghi phiên bản thư viện, lưu cấu hình và kết quả trung gian sẽ được thực hiện ngay từ đầu để giảm khó khăn khi tái tạo; đồng thời theo dõi lỗi theo nhóm sớm hơn trong quá trình phát triển.",
+      "new": "Bài học chính là loại duration để phù hợp thời điểm dự đoán, chọn trên validation và khóa trước test; đồng thời phân biệt bằng chứng với giả thuyết khi phân tích lỗi. Nếu làm lại, sẽ ghi phiên bản thư viện và cấu hình ngay từ đầu, lưu kết quả trung gian để tái tạo, và theo dõi lỗi theo nhóm sớm hơn."
+    },
+    {
+      "old": "Hướng dẫn đặt nội dung: Tại Mục 5.1, điền Bảng 15 và Bảng 16 đúng các ô trống sẵn có. Đặt hai đoạn giới thiệu trước Bảng 15; thay dấu “…” sau Bảng 16 bằng phần diễn giải nghiệp vụ bên dưới. Không cần thêm một hình ma trận ở Mục 5.1 vì Hình B.4 sẽ lưu đầu ra đó trong phụ lục.",
+      "new": "Hướng dẫn đặt nội dung: Tại Mục 5.1, điền Bảng 15 và Bảng 16 vào các ô trống sẵn có. Đặt hai đoạn giới thiệu trước Bảng 15; thay dấu “…” sau Bảng 16 bằng ba đoạn diễn giải dưới đây. Ảnh ma trận đặt ở Hình B.4 trong phụ lục, không cần lặp lại tại Mục 5.1."
+    },
+    {
+      "old": "Hướng dẫn đặt nội dung: Thay toàn bộ các dòng mẫu từ “Lỗi 1 (bỏ lỡ): mã dòng …” đến hết phần “Đề xuất” của Lỗi 6 bằng nội dung dưới đây. Giữ đủ đặc điểm, nhầm lẫn, bằng chứng, giả thuyết và đề xuất của từng khách. Có thể dùng tên lỗi in đậm như trong tài liệu này; không đánh lại số các mục lớn.",
+      "new": "Hướng dẫn đặt nội dung: Thay các dòng mẫu của Lỗi 1 đến hết Lỗi 6 bằng sáu phân tích dưới đây. Mỗi lỗi giữ đủ đặc điểm, nhầm lẫn, bằng chứng, giả thuyết và đề xuất; khoảng 110–130 từ theo cách tách bằng khoảng trắng, hướng tới khoảng 1/3 trang khi chép vào báo cáo. Chi tiết cơ bản đã có ở Bảng 20 nên không nhắc lại toàn bộ."
+    },
+    {
+      "old": "Hướng dẫn đặt nội dung: Điền đủ năm dòng Bảng 21 tại Mục 7.1. Đặt đoạn mở đầu trước bảng và hai đoạn kết luận sau bảng, thay dấu “…” sẵn có. Các bằng chứng ở Bảng 10, 12–14 đã nằm trong phần tuần 1–3 của báo cáo; chỉ dẫn lại, không chép lại các phần đó.",
+      "new": "Hướng dẫn đặt nội dung: Điền năm dòng Bảng 21 tại Mục 7.1. Đặt đoạn mở đầu trước bảng, một đoạn tổng kết sau bảng. Dẫn lại Bảng 10, 12–14 của phần tuần trước; không chép lại thí nghiệm hoặc diễn giải đã có."
+    },
+    {
+      "old": "Hướng dẫn đặt nội dung: Thay dấu “…” dưới Mục 7.2 bằng các đoạn dưới đây. Đây là nơi ghi đầy đủ giới hạn; Mục 5.3 chỉ nêu ngắn gọn hệ quả từ khách giả định và nhóm ít được chọn.",
+      "new": "Hướng dẫn đặt nội dung: Thay dấu “…” tại Mục 7.2 bằng hai đoạn dưới đây. Giữ đủ giới hạn dữ liệu, cách chia, nhân quả, phạm vi chọn cấu hình và khả năng tiếp cận theo nhóm; không lặp lại toàn bộ phân tích Mục 5–6."
+    },
+    {
+      "old": "Hướng dẫn đặt nội dung: Thay dấu “…” dưới Mục 7.3 bằng hai đoạn sau. Trình bày là hướng tương lai, không mô tả như việc đã hoàn thành.",
+      "new": "Hướng dẫn đặt nội dung: Thay dấu “…” tại Mục 7.3 bằng một đoạn sau. Đây là hướng tương lai, chưa phải việc đã thực hiện."
+    }
+  ],
+  "table_21": [
+    [
+      "Precision-yes test cao hơn mức nền gọi ngẫu nhiên cùng số khách.",
+      "Bảng 15–16: 0,468 so với khoảng 0,117; 1.146 cuộc gọi tìm được 536 khách, ngẫu nhiên kỳ vọng 134.",
+      "Quan sát trên test; chưa bảo đảm chiến dịch mới."
+    ],
+    [
+      "Chọn số nơ-ron, mô hình và ngưỡng theo quy tắc trên validation.",
+      "Bảng 12–14, Mục 4.3: E3 chọn 256 nơ-ron; mô hình cuối E5, τ* = 0,6; tuần 4 tái tạo đúng.",
+      "Xác nhận bằng mã và đầu ra."
+    ],
+    [
+      "Chọn gọi 1.146 khách, có 536 khách đồng ý và bỏ lỡ 522 khách.",
+      "Bảng 16, Mục 5.1.",
+      "Số đếm trên test tại τ*."
+    ],
+    [
+      "E4 thêm nhóm tuổi cải thiện so với E1 trên validation.",
+      "Bảng 13: 0,458 so với 0,446, tăng khoảng 0,012 ở ngưỡng tốt nhất riêng.",
+      "Có cải thiện quan sát; chưa khẳng định ổn định."
+    ],
+    [
+      "Loại duration giảm điểm E1 nhưng phù hợp dự đoán trước gọi.",
+      "Bảng 10, Mục 2.5: 0,375 so với 0,551 khi thêm thông tin chỉ biết sau gọi.",
+      "Có bằng chứng phép thử và căn cứ thời điểm thông tin."
+    ]
+  ],
+  "insert_before": "5. Kết quả trên test",
+  "insertions": [
+    "Cân đối độ dài khi chép vào báo cáo",
+    "Bảng tổng quan gợi ý Mục 5 khoảng 2 trang, Mục 6 khoảng 2,5 trang và Mục 7 khoảng 1 trang; hướng dẫn chi tiết lần lượt nêu khoảng 2,5; 2,5 và 1,5 trang. Đây là gợi ý phân bổ, không phải giới hạn cứng. Ưu tiên đủ yêu cầu, đúng số liệu và không lặp ý.",
+    "Bản đã rút gọn ưu tiên Mục 5 khoảng 2–2,5 trang, Mục 7 khoảng 1,5–2 trang. Mục 6 có thể khoảng 3,5–4 trang vì cần hai bảng và sáu lỗi, mỗi lỗi khoảng 1/3 trang theo hướng dẫn riêng. Không ép Mục 6 xuống 2,5 trang bằng cách bỏ bằng chứng hoặc thu nhỏ chữ. Đây là ước lượng phần nội dung để chép, không tính các dòng hướng dẫn, trang mở đầu và phụ lục trong tài liệu này; số trang thực tế còn phụ thuộc vị trí nối với phần trước."
+  ],
+  "old_table_21": [
+    [
+      "Precision-yes trên test cao hơn mức nền của gọi ngẫu nhiên cùng số khách.",
+      "Bảng 15–16, Mục 5.1: 0,468 so với khoảng 0,117; cùng 1.146 cuộc gọi, mô hình tìm được 536 khách đồng ý, ngẫu nhiên kỳ vọng khoảng 134.",
+      "Quan sát trên test lịch sử; chưa bảo đảm chiến dịch tương lai."
+    ],
+    [
+      "Số nơ-ron, mô hình và ngưỡng được chọn theo quy tắc định trước trên validation.",
+      "Bảng 12–14, Mục 4.3: chọn 256 nơ-ron cho E3; mô hình cuối E5, ngưỡng 0,6. Ô 4.1 tuần 4 tái tạo đúng quyết định.",
+      "Được xác nhận bằng mã và đầu ra đã lưu."
+    ],
+    [
+      "Trên test, chọn gọi 1.146 khách thì có 536 khách thực tế đồng ý; bỏ lỡ 522 khách đồng ý.",
+      "Bảng 16 và diễn giải Mục 5.1.",
+      "Số đếm trực tiếp tại ngưỡng đã khóa."
+    ],
+    [
+      "Bổ sung nhóm tuổi trong E4 cải thiện F1-yes validation so với E1.",
+      "Bảng 13: E4 đạt 0,458; E1 đạt 0,446 ở ngưỡng tốt nhất riêng, tăng khoảng 0,012.",
+      "Có cải thiện quan sát được; chưa khẳng định ổn định trên dữ liệu khác."
+    ],
+    [
+      "Loại duration làm điểm thấp hơn trong phép thử E1 nhưng phù hợp dự đoán trước cuộc gọi.",
+      "Bảng 10, Mục 2.5: E1 đạt 0,375; thêm duration đạt 0,551 nhưng dùng thông tin chỉ biết sau khi gọi.",
+      "Có bằng chứng trong phép thử và căn cứ về thời điểm có thông tin."
+    ]
+  ]
+}

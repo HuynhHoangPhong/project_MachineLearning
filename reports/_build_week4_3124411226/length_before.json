@@ -1,0 +1,31 @@
+﻿{
+    "pages":  10,
+    "headings":  [
+                     {
+                         "page":  1,
+                         "text":  "5. Kết quả trên test",
+                         "y_pt":  74.4
+                     },
+                     {
+                         "page":  3,
+                         "text":  "6. Phân tích lỗi",
+                         "y_pt":  615.6
+                     },
+                     {
+                         "page":  5,
+                         "text":  "6.3. Phân tích chi tiết từng lỗi",
+                         "y_pt":  315.6
+                     },
+                     {
+                         "page":  7,
+                         "text":  "6.4. Tổng hợp nhóm lỗi và đề xuất",
+                         "y_pt":  683.4
+                     },
+                     {
+                         "page":  8,
+                         "text":  "7. Kết luận",
+                         "y_pt":  333.6
+                     }
+                 ],
+    "word_count":  3774
+}
